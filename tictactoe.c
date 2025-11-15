@@ -2,16 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-//functions init
-void printboard(char boardmain[][100], int boardsizearr);
+
 
 
 
 int main() {
   int boardsize = 1;
   int mode = 0;
-  int scorep1 = 0, scorep2 = 0, scoreai = 0, round=0;
-  int x, y;
+  int game = 0;
   puts("Weclome to tic tac toe");
 while(boardsize < 3 || boardsize > 10){
   puts("input your desired board size (3-10)");
@@ -30,7 +28,7 @@ while(mode != 1 && mode != 2){
   scanf("%d", &mode);
     if(mode != 1 && mode != 2){
         puts("invalid mode, please try again");
-    
+    }
 }
   // create board
   char boardmain[boardsizearr][boardsizearr];
@@ -47,34 +45,33 @@ while(mode != 1 && mode != 2){
         boardmain[i][j] = '+';
       }
     }
-
   }
-  if (mode == 1) {
+  int x=0,y=0;
+  if(mode == 1) {
     printf("BOARD SIZE: %dx%d\n", boardsize, boardsize);
-    round++;
-    printf("Current Score: Player 1: %d  Player 2: %d\n", scorep1, scorep2);
-    printf("Round: %d\n", round);
-    printboard(boardmain, boardsizearr);
-    //take input from player
-  puts("Please input Player ones (X) move by using a location (ex. 3 2)");
-  scanf("%d %d", &x, &y);
- 
-  boardmain[x][y] = 'X';
-  printboard(boardmain, boardsizearr);
-
-  }
-  
-}
-}
-
-// print board function
-void printboard(char boardmain[100][100], int boardsizearr){
+    game = 1;
     // print board state
     for (int i = 0; i < boardsizearr; i++) {
       printf("\n");
       for (int j = 0; j < boardsizearr; j++) {
         printf("%c", boardmain[i][j]);
+        }
       }
     }
-    printf("\n");
-}
+    if(game == 1){
+        puts("Player 1 Input move via coordinates");
+        scanf("%d %d", &x, &y);
+        int x1=x-2, y1=y-2;
+        x=x+x1;
+        y=y+y1;
+        boardmain[x][y] = 'X';
+        // print board state
+    for (int i = 0; i < boardsizearr; i++) {
+      printf("\n");
+      for (int j = 0; j < boardsizearr; j++) {
+        printf("%c", boardmain[i][j]);
+        }
+      }
+    }
+    }
+
