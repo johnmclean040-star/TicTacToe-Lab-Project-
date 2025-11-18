@@ -79,6 +79,49 @@ int playeraimove(int boardsizearr, char boardmain[boardsizearr][boardsizearr]) {
     int movemade=0;
     printf("\n");
     puts("AI is making a move...");
+    //win ai rows
+  for (int i = 0; i < boardsizearr; i += 2) {
+     int countX = 0;
+     int countO = 0;
+     int wini = 0;
+     int winj = 0;
+     for (int j = 0; j < boardsizearr; j += 2) {
+       if (boardmain[i][j] == 'O') {
+         countO++;
+       } else if (boardmain[i][j] == ' ') {
+         wini = i;
+         winj = j;
+       }
+     }
+     if (countO == (boardsizearr) / 2) {
+     if(movemade == 0){
+       boardmain[wini][winj] = 'O';
+     movemade=1;
+     }
+     } 
+   }
+   //win ai columns
+     for (int j = 0; j < boardsizearr; j += 2) {
+     int countX = 0;
+     int countO = 0;
+     int wini = 0;
+     int winj = 0;
+     for (int i = 0; i < boardsizearr; i += 2) {
+       if (boardmain[i][j] == 'O') {
+         countO++;
+       } else if (boardmain[i][j] == ' ') {
+         wini = i;
+         winj = j;
+       }
+     }
+     if (countO == (boardsizearr) / 2) {
+       if(movemade == 0){
+       boardmain[wini][winj] = 'O';
+       movemade=1;
+       }
+      
+     }
+   }
     //counter rows
 for (int i = 0; i < boardsizearr; i += 2) {
     int countX = 0;
